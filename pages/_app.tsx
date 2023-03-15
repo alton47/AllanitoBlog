@@ -15,13 +15,3 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 export default MyApp
-
-{/* 
-
-
-function MyApp({ Component, pageProps }) {
-  
-}
-
-export default MyApp;
-  */}
