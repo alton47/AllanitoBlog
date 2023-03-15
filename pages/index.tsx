@@ -3,19 +3,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 import { PostCard, Categories, PostWidget } from '../components';
-
-
-{/*import { FeaturedPosts } from '../sections/index';
 import { getPosts } from '../services';
+{/*import { FeaturedPosts } from '../sections/index';
  */}
 
- const posts = [
-  {title: 'React Testing', excerpt: 'Learn React Testing'},
-  {title: 'React with Tailwind', excerpt: 'Learn React with Tailwind'}
-
- ]
-
-const Home: NextPage = () => {
+const Home: NextPage = ( { posts } ) => {
   return (
     <div className="container mx-auto px-10 mb-8">
       <Head>
@@ -42,6 +34,14 @@ const Home: NextPage = () => {
   )
 }
 
+// Fetch data at build time
+export async function getStaticProps() {
+  const posts = (await getPosts()) || [];
+  return {
+    props: { posts }
+  }
+  };
+
 export default Home
 
 {/*<FeaturedPosts />
@@ -59,9 +59,3 @@ export default Home
       </div> */}
 
 
-  {/*// Fetch data at build time
-export async function getStaticProps() {
-  const posts = (await getPosts()) || [];
-  return {
-    props: { posts },
-  }; */}
