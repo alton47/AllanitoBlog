@@ -49,23 +49,16 @@ const PostCard = ({ post }) => {
       </Link>
     </div>
   </div>
-   
   )
 }
 
 export default PostCard
 
-{/* import React from 'react';
+{/* 
+import React from 'react';
 import Image from 'next/image';
 
 import { grpahCMSImageLoader } from '../util';
 
 const PostCard = ({ post }) => (
-
-
-
-   
-);
-
-export default PostCard;
  */}
