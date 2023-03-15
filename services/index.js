@@ -2,6 +2,7 @@ import { request, gql } from 'graphql-request';
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
+//getPosts
 export const getPosts = async () => {
     const query = gql`
       query Assets {
@@ -46,7 +47,48 @@ export const getPosts = async () => {
 
     return result.postsConnection.edges;
   };
+
+
+
+
+
+  //getPostDetails
+  export const getPostDetails = async (slug) => {
+    const query = gql`
+      query GetPostDetails($slug : String!) {
+        post(where: {slug: $slug}) {
+          title
+          excerpt
+          featuredImage {
+            url
+          }
+          author{
+            name
+            bio
+            photo {
+              url
+            }
+          }
+          createdAt
+          slug
+          content {
+            raw
+          }
+          categories {
+            name
+            slug
+          }
+        }
+      }
+    `;
+    const result = await request(graphqlAPI, query, { slug });
+
+    return result.post;
+  };
+    
   
+
+
 
   //getRecentPosts
 export const getRecentPosts = async () => {
@@ -110,3 +152,6 @@ export const getRecentPosts = async () => {
   
     return result.categories;
   };
+  
+
+
