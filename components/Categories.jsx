@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+
 
 const Categories = () => {
   return (
@@ -9,8 +11,7 @@ const Categories = () => {
 export default Categories
 
 
-{/* import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+{/* 
 
 import { getCategories } from '../services';
 
